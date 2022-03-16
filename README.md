@@ -30,10 +30,14 @@ A collection of useful commands and features for use by Minetest server administ
   + Required privileges: heal
   + Heals specified player, if no player is specified, heals self.
 
++ /alwaysday
+  + Required Privileges: settime
+  + Always day time
+
 + /motd
   + Required privileges: none
   + Displays server motd.
-	
+
 + /broadcast
   + Required privileges: broadcast
   + Broadcasts message to entire server.

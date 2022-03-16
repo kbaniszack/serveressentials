@@ -202,6 +202,21 @@ minetest.register_chatcommand("godmode", {
 	end
 })
 
+minetest.register_chatcommand("alwaysday", {
+	params = "",
+	description = "It's always a beautifull sunny day here",
+	privs = {settime = true},
+	func = function(player_name, param)
+		players[player_name]["always_day"] = not players[player_name]["always_day"];
+		if players[player_name]["always_day"] then
+			minetest.chat_send_player(player_name, "Alwaysday is now on")
+		else
+			minetest.chat_send_player(player_name, "Alwaysday is now off")
+		end
+		return
+	end
+})
+
 minetest.register_chatcommand("setspeed", {
 	params = "<speed> [player_name]",
 	description = "Set your or somebody else's walking speed",
@@ -348,6 +363,10 @@ minetest.register_globalstep(function(dtime)
 			if players[player_name]["god_mode"] then
 				player:set_hp(20)
 				player:set_breath(11)
+			end
+
+			if players[player_name]["always_day"] then
+				minetest.set_timeofday(0.5)
 			end
 		end
 	end
